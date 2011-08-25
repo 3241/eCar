@@ -1,6 +1,5 @@
-Basic Info
-==========
-Open the project description file for a description of it goals.
-Installation
-============
+#Basic Info
+A project to design and build an autonomous vehicle capable of depth-perception between two cameras and image recognition
+for lane tracking and obstacle avoidance. For more inforation, visit our [wiki](https://github.com/Sheyne/Autocar/wiki).
+##Installation
 Nothing to install yet.
