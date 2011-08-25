@@ -1,7 +1,8 @@
 Project Description
 ===================
-The goal of the project is to build a model car that is atonomus and drive on
-a track and field course.
+The goal of this project is to create, and produce coding for an autonomous vehicle capable of line and lane tracking, obstacle recognition and avoidance, and appropriate use of traffic signs and markers.
 
-It will use image recognition to navigate around obsticles and obey traffic
-signs.
+For the beginning stage, the autonomous vehicle will have to be of a small, fairly robust design. The preliminary goal is to acquire and use an R/C car commonly used by hobbyists. Expected to be of a size roughly equivalent to a microwave oven, the autonomous vehicle must be capable of supporting and powering a set of cameras and a tracking and control system, possibly an onboard laptop. 
+
+Cameras should be spaced at the widest possible portion of the vehicle, allowing for easier triangulation. Image recognition and control must be done through a computing system capable of relatively high-speed I/O between the cameras and vehicle. The two proposed computing designs are as follows: an onboard system, such as a laptop, directly wired into the cameras and vehicle, or an outboard system consisting of a wireless link between the vehicle and an external computing system, such as a desktop computer. Either system will need to be evaluated for feasibility and capability, as the high number of calculations required for an image recognition and control program will limit what systems can perform the task. 
+
