@@ -21,19 +21,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
-		36F9395A140714D500F77782 /* Autocar */ = {
+		3687D4B214071AF10095D48D /* python */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = 36F9395B140714D500F77782 /* Build configuration list for PBXLegacyTarget "Autocar" */;
+			buildConfigurationList = 3687D4B514071AF10095D48D /* Build configuration list for PBXLegacyTarget "python" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/python;
-			buildWorkingDirectory = /Users/sheyne/Dropbox/Dev/autocar/Autocar;
+			buildWorkingDirectory = "";
 			dependencies = (
 			);
-			name = Autocar;
+			name = python;
 			passBuildSettingsInEnvironment = 1;
-			productName = Autocar;
+			productName = python;
 		};
 /* End PBXLegacyTarget section */
 
@@ -54,12 +54,26 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				36F9395A140714D500F77782 /* Autocar */,
+				3687D4B214071AF10095D48D /* python */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin XCBuildConfiguration section */
+		3687D4B314071AF10095D48D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3687D4B414071AF10095D48D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		36F939581407149100F77782 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -72,58 +86,17 @@
 			};
 			name = Release;
 		};
-		36F9395C140714D500F77782 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				DEBUGGING_SYMBOLS = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		36F9395D140714D500F77782 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3687D4B514071AF10095D48D /* Build configuration list for PBXLegacyTarget "python" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3687D4B314071AF10095D48D /* Debug */,
+				3687D4B414071AF10095D48D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		36F939561407149000F77782 /* Build configuration list for PBXProject "Autocar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -132,14 +105,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		36F9395B140714D500F77782 /* Build configuration list for PBXLegacyTarget "Autocar" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				36F9395C140714D500F77782 /* Debug */,
-				36F9395D140714D500F77782 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

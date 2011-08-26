@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>python.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>3687D4B214071AF10095D48D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>36F9395A140714D500F77782</key>
 		<dict>
 			<key>primary</key>
