@@ -1,5 +1,6 @@
-#Basic Info
-A project to design and build an autonomous vehicle capable of depth-perception between two cameras and image recognition
-for lane tracking and obstacle avoidance. For more inforation, visit our [wiki](https://github.com/Sheyne/Autocar/wiki).
-##Installation
-Nothing to install yet.
+#Overview
+Emergency Autonomous Vehicle project to develop a multi-purpose, obstacle 
+avoiding system for use in hospitals and assisted care facilities.
+
+Check out the wiki: https://github.com/3241/eCar/wiki for more information.
+
