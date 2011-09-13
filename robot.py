@@ -1,50 +1,25 @@
-class RobotBase(object):
-	"""A base class for all objects that are not the controller."""
-	
-	
-	#getters and setters
-	"""These ensure that when some instance of RobotBase sets its controller, the controller also sets it back."""
-	@property
-	def controller(self, controller):
-		"""returns the internal instance of the controller."""
-		return self.controller_instance
-
-
-
 class Controller(object):
 	"""This is the brain of the robot. It decides how the robot responds to a given situation."""
+	def __init__(self, interpreter=None, io=None):
+		"""Set controller's internal instances of interpreter and io to the arguments given."""
+		if interpreter==None:
+			interpreter=Interpreter()
+		if io==None:
+			#need to add reasonable defaults for IO here.
+			io=IO()
+		interpreter.controller=self
+		io.controller=self
+		self.interpreter=interpreter
+		self.io=io
+		
 	def received_obstacle(self, obstacle):
 		"""Respond to obstacle by varying path."""
 	def received_position(self, position):
 		"""Report current position to server. Adjust course based on most accurate current position/orientation."""
 	def ultrasonic_distance(self, distance):
 		"""Perform the appropriate response for the distance returned."""
-		
-		
-	#getters and setters
-	@property
-	def io(self, io):
-		"""returns the internal instance of the io."""
-		return self.io_instance
-	@io.setter
-	def io(self, io):
-		"""Sets the internal instance of the io."""
-		if io.controller!=self:
-			io.controller=self
-		self.io_instance=io
 
-	@property
-	def interpreter(self, interpreter):
-		"""returns the internal instance of the interpreter."""
-		return self.interpreter_instance
-	@interpreter.setter
-	def interpreter(self, interpreter):
-		"""Sets the internal instance of the interpretor."""
-		if interpreter.controller!=self:
-			interpreter.controller=self
-		self.interpretor_instance=interpretor
-
-class Interpreter(RobotBase):
+class Interpreter(object):
 	"""Processes raw data from inputs. And sends the to the controller."""
 	
 	def received_ultrasonic(self,data):
@@ -55,15 +30,9 @@ class Interpreter(RobotBase):
 		
 	def received_kinect(self,data):
 		"""Processes the kinect data and looks for obstacles. For any obstacles it finds, it calls `received_obstacle` on the controller."""
-		
-	@controller.setter
-	def controller(self, controller):
-		"""Sets the internal instance of the controller. And sets the controller's internal instance of this back to this."""
-		if controller.interpreter!=self:
-			controller.interpreter=self
-		self.controller_instance=controller
 
-class IO(RobotBase):
+
+class IO(object):
 	"""This class deals with input and output with the robot for communications over USB. This includes the microchip, the camera, and the kinect."""
 	def __init__(self, devices):
 		"""Takes file handles, or some way of referencing all of the the devices it will comunicate with. It will initialize connections to each of the devices and listen for data. Also sets the objects's interpreter field to the ones that is passed as an argument."""
@@ -71,10 +40,3 @@ class IO(RobotBase):
 		"""Takes data from a given source and passes it to the appropriate method in the interpreter. (`received_ultrasonic`, `received_top_camera`, or `received_kinect`)"""
 	def motor_speed(left=None, right=None):
 		"""Sets the left and/or right speed. Only set speeds that are not None."""
-		
-	@controller.setter
-	def controller(self, controller):
-		"""Sets the internal instance of the controller. And sets the controller's internal instance of this back to this."""
-		if controller.io!=self:
-			controller.io=self
-		self.controller_instance=controller
