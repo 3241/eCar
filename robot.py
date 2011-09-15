@@ -1,3 +1,10 @@
+"""For what little difference it makes, the defacto python distribution used for this
+        project (And particularly the test computer) is Python 2.7"""
+"""To talk with the Motor Controller, will need PyUSB on your computer"""
+import pyusb
+""""SimpleCV is required for image recognition and camera control"""
+import cv
+
 class Controller(object):
 	"""This is the brain of the robot. It decides how the robot responds to a given situation."""
 	def __init__(self, interpreter=None, io=None):
