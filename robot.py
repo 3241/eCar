@@ -30,7 +30,8 @@ class Interpreter(object):
 		
 	def received_kinect(self,data):
 		"""Processes the kinect data and looks for obstacles. For any obstacles it finds, it calls `received_obstacle` on the controller."""
-
+        def Hunter_Is_Totally_Awsome(self):
+                """This is just for me"""
 
 class IO(object):
 	"""This class deals with input and output with the robot for communications over USB. This includes the microchip, the camera, and the kinect."""
