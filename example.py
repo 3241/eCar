@@ -1,7 +1,4 @@
-import cv
-import time
-
-window = cv.NamedWindow("camera", 1)
+import cvwindow = cv.NamedWindow("camera", 1)
 capture = cv.CreateCameraCapture(0)
 width = int(cv.GetCaptureProperty(capture, cv.CV_CAP_PROP_FRAME_WIDTH)) 
 height = int(cv.GetCaptureProperty(capture, cv.CV_CAP_PROP_FRAME_HEIGHT))
