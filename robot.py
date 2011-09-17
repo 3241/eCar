@@ -1,9 +1,25 @@
 """For what little difference it makes, the defacto python distribution used for this
         project (And particularly the test computer) is Python 2.7"""
 """To talk with the Motor Controller, will need PyUSB on your computer"""
-import pyusb
+import usb
 """"SimpleCV is required for image recognition and camera control"""
 import cv
+
+
+"""REMINDER TO EVERYONE PLEASE:
+        Please use the metric system, we really don't want to
+            crash the robot into Mars...
+
+        Couple of baselines rules here:
+            Angles are measured from the robot's straight ahead view. That means that
+                something in the left side of the field of view would have a negative angle,
+                while something to the right of the bot is positive. That means that we should
+                never have an angle larger or smaller that +- 180 degrees. (Please use degrees
+                instead of radians, makes things nicer...)
+            Again, use the SI system, that means, if I want to measure distance,
+                it's measured in meters, time is in seconds, and mass is in kg.
+"""    
+
 
 class Controller(object):
     """This is the brain of the robot. It decides how the robot responds to a given situation."""
@@ -19,9 +35,30 @@ class Controller(object):
             self.io = io
         interpreter.controller=self
         io.controller=self
+        self.obstacles = []
+        self.robot_width = 
             
     def received_obstacle(self, obstacle):
         """Respond to obstacle by varying path."""
+        """Receive object as a tuple (identifier, Left_magnitude, Left_angle,
+                                        Right_magnitude, Right_angle)
+            Assume flat surface between two angles (I know, I know)
+            The ultimate hope is that image recognition can identify persistant
+                obstacles between frames and report them with the same identifier here.
+            (Note, I can write up an expected object movement module at some point
+                if it is needed."""
+        recognized = False
+        for obj in self.obstacles:
+            if obstacle[0] == obj[0]:
+                obj = obstacle
+                recognized = True
+        if recognized == False:
+            self.obstacles.append(obstacle)
+        """WEEE! Reactive steering! This simply looks at how big the obstacle is
+                and where it's at and steers away from it if it's in a collision course."""
+        
+                
+        
         
     def received_position(self, position):
         """Report current position to server. Adjust course based on most accurate current position/orientation."""
