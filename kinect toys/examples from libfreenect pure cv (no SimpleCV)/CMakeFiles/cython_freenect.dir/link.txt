@@ -1,0 +1,1 @@
+/usr/bin/gcc    -bundle -Wl,-headerpad_max_install_names   -o freenect.so CMakeFiles/cython_freenect.dir/freenect.o -lfreenect_sync 
