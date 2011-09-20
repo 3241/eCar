@@ -24,6 +24,21 @@ import time
 """    
 
 
+class Map(object):
+	def __init__(self, map_data):
+		"""Parse `map_data`, and generate internal representation of map."""
+
+	def position_for_glyph(self, glyph):
+		"""Take a glyph string and return the map-position."""
+
+class Route(object):
+	""""""
+	def __init__(self, route_data):
+		"""Parse `map_data`, and generate internal representation of route."""
+
+	def direction_for_position(self, map_position):
+		pass
+
 class Controller(object):
     """This is the brain of the robot. It decides how the robot responds to a given situation."""
     def __init__(self, interpreter=None, io=None):
@@ -104,7 +119,7 @@ class Controller(object):
                 
         
         
-    def received_position(self, position):
+    def received_target(self, direction, certainty=1):
         """Report current position to server. Adjust course based on most accurate current position/orientation."""
     def ultrasonic_distance(self, distance):
         """Perform the appropriate response for the distance returned."""
@@ -130,3 +145,4 @@ class IO(object):
 		"""Takes data from a given source and passes it to the appropriate method in the interpreter. (`received_ultrasonic`, `received_top_camera`, or `received_kinect`)"""
 	def motor_speed(left=None, right=None):
 		"""Sets the left and/or right speed. Only set speeds that are not None."""
+	
