@@ -21,6 +21,9 @@ import time
                 instead of radians, makes things nicer...)
             Again, use the SI system, that means, if I want to measure distance,
                 it's measured in meters, time is in seconds, and mass is in kg.
+            Motor speeds are designated as seperate left and right motors in percentages of
+                motor max speed. So If I want to go full speed, the variable should be 1.
+                For going backwards, the speed will be negative percents.
 """    
 
 
@@ -40,6 +43,9 @@ class Controller(object):
         io.controller=self
         self.obstacles = []
         self.robot_width = 1
+        self.left_speed = 0
+        self.right_speed = 0
+        self.total_speed = 0
             
     def received_obstacle(self, obstacle):
         """Respond to obstacle by varying path."""
