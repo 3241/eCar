@@ -45,69 +45,23 @@ class Controller(object):
         self.robot_width = 1
         self.left_speed = 0
         self.right_speed = 0
-        self.total_speed = 0
+        self.total_speed = 0.5*(self.left_speed+self.right_speed)
             
-    def received_obstacle(self, obstacle):
+    def received_obstacle(self, obstaclelist):
+        #All we need is a list of all obstacles that the Kinect sees in one frame
+        #This function will be called every single cycle, and will determine a new motor control structure every single cycle
         """Respond to obstacle by varying path."""
         """Receive object as a tuple (identifier, Left_magnitude, Left_angle,
                                         Right_magnitude, Right_angle)
             Assume flat surface between two angles (I know, I know)
             The ultimate hope is that image recognition can identify persistant
-                obstacles between frames and report them with the same identifier here.
+                obstacles between frames and report them thus, but not for now.
             (Note, I can write up an expected object movement module at some point
-                if it is needed."""
-        #This simply updates the total list of obstacles that we like keeping about
-        recognized = False
-        for obj in self.obstacles:
-            if obstacle[0] == obj[0]:
-                #If the obstacle is already known, just update it
-                obj = obstacle
-                recognized = True
-        if recognized == False:
-            #Otherwise, make a new one
-            self.obstacles.append(obstacle)
-        """WEEE! Reactive steering! This simply looks at how big the obstacle is
-                and where it's at and steers away from it if it's in a collision course."""
-        #Determine whether either point designated by the Tuple is within the straight-line
-            #course of the robot
-        left_x = obstacle[1]*math.sin(math.radians(obstacle[2]))
-        right_x = obstacle[1]*math.sin(math.radians(obstacle[4]))
-        #Figure out whether its to the left, right, or center and do something about it
-        if (obstacle[2]>=0)and(obstacle[4]>=0):
-            #Entire OBstacle is to the right of the robot center
-            if obstacle[2]>(self.robot_width/2):
-                #Obstacle is beyond the current collision path of the robot,
-                #No action needed
-                pass
-            else:
-                #Action required to steer left
-                """Must fill in the appropriate motor control information here"""
-                pass
-        elif (obstacle[2]<0)and(obstacle[4]<0):
-            #Entire Obstacle is to the left of the robot center
-            if obstacle[4]<(-self.robot_width/2):
-                #Obstacle is beyond the current collision path of the robot,
-                #No action is needed
-                pass
-            else:
-                #Action required to steer right
-                """Must fill in the appropriate motor control information here"""
-                pass
-        else:
-            #obstacle is centered on the robot
-            """For the moment this is simply going to attempt to steer towards the
-                side of the obstacle that is lesser, until one of the other contingencies
-                sets in. If the obstacle is absolutely straight on, it will go the right.
-                    (NOTE: This is temporary, this bit absolutely requires to have multi-
-                        obstacle handling to determine the best accepted course between
-                        all obstacles in the area when confronted with this situation."""
-            if abs(obstacle[2])<abs(obstacle[4]):
-                #steer to the left
-                pass
-            else:
-                #steer to the right
-                pass
-                
+                if it is needed.)"""
+        """CHOP CHOP I cut out the original reactive steering system in preference to a different one"""
+        """New Reactive steering system!
+                This system is will determine the 'gaps' between objects and then decide whether or not
+                the robot can fit through them."""
         
         
     def received_position(self, position):
