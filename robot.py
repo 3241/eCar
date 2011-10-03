@@ -76,7 +76,12 @@ class Controller(object):
         """CHOP CHOP I cut out the original reactive steering system in preference to a different one"""
         """New Reactive steering system!
                 This system is will determine the 'gaps' between objects and then decide whether or not
-                the robot can fit through them."""
+                the robot can fit through them.
+                ***THIS IS COMPLETELY EXPERIMENTAL, IT PROBABLY WORK***"""
+        """     1. Sort all obstacles from left to right in view.
+                2. Chop obstacles down so that we only look at everything 3 robot lengths in front of the robot.
+                        (Note, this will maintain object postition and angles, but only for the area immediately
+                                at the front of the robot up to the 3 length limit)"""
         
         
     def received_target(self, direction, certainty=1):
