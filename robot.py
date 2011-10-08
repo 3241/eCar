@@ -12,6 +12,7 @@ import time
 """REMINDER TO EVERYONE PLEASE:
         Please use the metric system, we really don't want to
             crash the robot into Mars...
+	Please disregard the apove statment
 
         Couple of baselines rules here:
             Angles are measured from the robot's straight ahead view. That means that
