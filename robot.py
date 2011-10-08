@@ -113,11 +113,9 @@ class Controller(object):
         """Perform the appropriate response for the distance returned."""
 
 class Interpreter(object):
-	def __init__(self):
-		self.kinect = Kinect()
-		self.dis = Display()
-
 	"""Processes raw data from inputs. And sends the to the controller."""
+	def __init__(self):
+		self.dis = Display()
 	def received_ultrasonic(self,data):
 		"""Processes ultrasonic data and sends it to the controller's `ultrasonic_distance` method."""
 		
@@ -126,6 +124,8 @@ class Interpreter(object):
 		
 	def received_kinect(self,data):
 		"""Processes the kinect data and looks for obstacles. For any obstacles it finds, it calls 				`received_obstacle` on the controller."""
+		depth_img = self.io.take_depth()
+		depth_img.findBlobs(threshval=127, minsize=10, maxsize=0)
 		
 
 
@@ -133,7 +133,9 @@ class IO(object):
 	"""This class deals with input and output with the robot for communications over USB. This includes the 		microchip, the camera, and the kinect."""
 	def __init__(self, devices):
 		"""Takes file handles, or some way of referencing all of the the devices it will comunicate with. It 				will initialize connections to each of the devices and listen for data. Also sets the 				objects's interpreter field to the ones that is passed as an argument."""
-		
+		self.kinect = SimpleCV.Kinect()
+	def take_depth(self):
+		return(self.kinect.getDepth())
 	def received_data(self,source, data):
 		"""Takes data from a given source and passes it to the appropriate method in the interpreter. (`received_ultrasonic`, `received_top_camera`, or `received_kinect`)"""
 	def motor_speed(left=None, right=None):
