@@ -9,25 +9,6 @@ inch_conver = 0.0393700787
 img_width = 540
 """The maxiumum angle that the kinect can view"""
 kinect_max_angle = 69
-
-if __name__ == "__Main__":
-	inter = kinect_interpreter()
-	while 1:
-		depth = k.getDepth()
-		"""converts the image into inches instead of mm"""
-		depth = multiply(depth, inch_conver)
-		"""Or we can use this to convert it into cm, or into m by changing 10 to 100"""
-		#depth = divide(depth, 10)
-		"""We will talk more about it"""
-		"""inverts the image, since blob detect looks for lowest level pixels"""
-		depth = depth.invert()
-		"""Makes blobs easier to detect"""
-		depth = depth.erode()
-		blob_array = inter.blob_detect(depth)
-		theadau_array = inter.get_theadaus(blob_array)
-		outside_coord_array = inter.get_outside_points(blob_array)
-		blob_width_array = inter.get_width
-		print blob_width_array
 	
 class kinect_interpreter(object):
 	"""Outline for how class will work"""
@@ -53,7 +34,24 @@ class kinect_interpreter(object):
 				- (2*outside_coord_array[i][0]*outside_coord_array[i][1]*cos(theadau_array[i]))
 		return(blob_width_array)
 
-
+if __name__ == "__Main__":
+	inter = kinect_interpreter()
+	while 1:
+		depth = k.getDepth()
+		"""converts the image into inches instead of mm"""
+		depth = multiply(depth, inch_conver)
+		"""Or we can use this to convert it into cm, or into m by changing 10 to 100"""
+		#depth = divide(depth, 10)
+		"""We will talk more about it"""
+		"""inverts the image, since blob detect looks for lowest level pixels"""
+		depth = depth.invert()
+		"""Makes blobs easier to detect"""
+		depth = depth.erode()
+		blob_array = inter.blob_detect(depth)
+		theadau_array = inter.get_theadaus(blob_array)
+		outside_coord_array = inter.get_outside_points(blob_array)
+		blob_width_array = inter.get_width
+		print blob_width_array
 
 
 
