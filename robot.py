@@ -7,7 +7,7 @@ class BotModule(object):
 	
 	def setup(self):
 		pass
-
+		
 class IO(BotModule):
 	def setup(self):
 		pass
@@ -25,4 +25,14 @@ class AI(BotModule):
 		pass
 
 class Bot(object):
-    pass
+    def __init__(self, botmodules = (AI, KinectProcessing, Glyph, IO)):
+		self.setup_botmodules(botmodules)
+	
+	def setup_botmodules(self, botmodules):
+		"""Configure the set `self.modules` as instances of the passed `botmodules` argument."""
+		self.modules = set()
+		for module in botmodules:
+			try:
+				self.modules.add(module(bot = self))
+			except TypeError:
+				raise TypeError("passed module: %s, is not a BotModule instance." % module)
