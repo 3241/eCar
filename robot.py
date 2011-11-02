@@ -39,6 +39,16 @@ class AI(BotModule):
                 return "Left"
             elif heading > 0:
                 return "Right"
+        def groupPillars(self,pillars):
+            """Split pillar array into array of pillar (distance,width) tuples"""
+            #group pillars into 5 object groups
+            groups = []
+            newgroup = []
+            for i in range(0,len(pillars)):
+                if i%5==0 or i==len(pillars)-1:
+                    groups.append(newgroup)
+                    newgroup = []
+                newgroup.append(pillars[i])
         def receivePillars(self,pillars):
             """Takes Pillar Array and determines appropriate heading"""
             """Check to determine if heading is correct"""
@@ -53,8 +63,7 @@ class AI(BotModule):
                 elif result=="Right":
                     bot.goRight()
             """Analyze environment and choose a gap to go through"""
-            #Group pillars into objects
-            
+            groupPillars(pillars)
                     
 
 class Bot(object):
