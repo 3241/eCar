@@ -1,4 +1,5 @@
-#! /bin/bash
+#! /usr/bin/python
+import fifolink
 
 class BotModule(object):
     def __init__(self, bot):
@@ -10,7 +11,10 @@ class BotModule(object):
 		
 class IO(BotModule):
 	def setup(self):
-		pass
+		self.fifo = fifolink.FifoLink("top_camera.fifo", self.receive_top_cam_data)
+	
+	def receive_top_cam_data(self, message):
+		print "Recieved: %s, from the top camera." % message
 
 class Glyph(BotModule):
 	def setup(self):
