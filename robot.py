@@ -30,29 +30,32 @@ class AI(BotModule):
 	    self.correctdestinationthreshold = 10 #pixels
 	    self.correctheadingthreshold = 0.087 #Radians
 	    self.correctheading = False
-	    self.currentheading = "Unknown"
-	    self.estimatedheading = "Unknown"
-	def GlyphMove(self,moveto,knownat):
-            self.currentheading = knownat
-            self.estimatedheading = knownat
-            result = self.determineDirection(moveto,knownat)
-            if result == "Left":
-                self.bot.startLeft()
-            elif result == "Right":
-                self.bot.startRight()
-            elif result == "Straight":
-                self.bot.startForward()
-	def determineDirection(self,movetoheading,currentheading):
-            if self.currentheading in range(movetoheading-self.correctheadingthreshold,movetoheading+self.correctheadingthreshold):
+	    self.currentheading = Bot.getHeading()
+	def determineDirection(self,heading):
+            if self.currentheading in range(-self.correctheadingthreshold,self.correctheadingthreshold):
                 self.correctheading = True
                 return "Straight"
-            elif self.currentheading > movetoheading:
+            elif heading < 0:
                 return "Left"
-            elif self.currentheading < movetoheading:
+            elif heading > 0:
                 return "Right"
-        def receivePillars(self.pillars):
+        def receivePillars(self,pillars):
             """Takes Pillar Array and determines appropriate heading"""
+            """Check to determine if heading is correct"""
+            while self.correctheading == False:
+                """If it is not correct, begin turning the bot"""
+                heading = bot.getHeading()
+                result = determineDirection(heading)
+                if result=="Straight":
+                    bot.goForward()
+                elif result=="Left":
+                    bot.goLeft()
+                elif result=="Right":
+                    bot.goRight()
+            """Analyze environment and choose a gap to go through"""
+            #Group pillars into objects
             
+                    
 
 class Bot(object):
     def __init__(self, botmodules = (AI, KinectProcessing, Glyph, IO)):
