@@ -135,3 +135,5 @@ class AI():
     def get_depth_transposed(self):
         return get_depth().transpose()    
 
+App = AI()
+AI.setup()
