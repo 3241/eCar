@@ -136,7 +136,7 @@ class AI():
         return freenect.sync_get_depth()[0]
     
     def get_depth_transposed(self):
-        return get_depth().transpose()    
+        return self.get_depth().transpose()    
 
 App = AI()
 App.setup()
