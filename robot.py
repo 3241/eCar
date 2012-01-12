@@ -30,7 +30,7 @@ class AI():
     def mainloop(self):
         while 1:
             """Check to determine if heading is correct"""
-            f = file(os.path.expanduser('~/Dropbox/newdir.txt'),'r')
+            f = file(os.path.expanduser('~/Dropbox/newdir'),'r')
             firstline = f.readline()
             if not firstline=="None":
                 if firstline=="Stop":
@@ -38,7 +38,7 @@ class AI():
                 else:
                     self.newheading = float(firstline)
                 f.close()
-                f1 = file(os.path.expanduser('~/Dropbox/newdir.txt'),'w')
+                f1 = file(os.path.expanduser('~/Dropbox/newdir'),'w')
                 f1.writelines("None")
             else:
                 f.close()
