@@ -5,6 +5,9 @@ import freenect
 import pyroomba
 
 class AI():
+    def __init__(self):
+        self.setup()
+        
     def setup(self):
         self.minobjectwidth = 5 #Pixels
         self.distancethreshold = 0.10 #m
@@ -136,4 +139,4 @@ class AI():
         return get_depth().transpose()    
 
 App = AI()
-AI.setup()
+App.setup()
