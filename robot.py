@@ -19,6 +19,7 @@ class AI():
         self.fieldofview = 0.995 #radians (or 57 degrees)
         self.pixelsperrad = 640/self.fieldofview #I'm pretty sure
         self.turnradpersec = 1.05#This is an estimate, really ought to check (based on 1 rev/6 secs)
+        self.floor = self.get_depth_transposed()
         self.mainloop()
     def mainloop(self):
         while 1:
